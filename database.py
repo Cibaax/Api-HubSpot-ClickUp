@@ -20,7 +20,7 @@ Base = declarative_base()
 
 class ApiCall(Base):
     __tablename__ = "api_calls"
-    id = Column(Integer, primary_key=True, autoincrement=True)
+    id = Column(Integer, primary_key=True)
     endpoint = Column(String)
     params = Column(String)
     result = Column(String)

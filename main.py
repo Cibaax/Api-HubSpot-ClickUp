@@ -3,13 +3,16 @@ from database import get_db, create_api_call, setup_database
 from hubspot import create_contact_in_hubspot, get_hubspot_contacts
 from clickup import sync_contacts_to_clickup
 from fastapi import HTTPException
+import logging
+
+
 app = FastAPI()
-
-
 
 @app.on_event("startup")
 async def startup_event():
     setup_database()
+    logging.basicConfig(filename='api.log', level=logging.INFO)
+
 
 
 @app.post("/contacts/hubspot")

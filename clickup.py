@@ -1,4 +1,5 @@
 import requests
+import logging
 from database import create_api_call
 
 CLICKUP_API_TOKEN = "pk_3182376_Q233NZDZ8AVULEGGCHLKG2HFXWD6MJLC"
@@ -29,3 +30,5 @@ def sync_contacts_to_clickup(contacts, db):
         response.raise_for_status()
 
         create_api_call(db, "/contacts/sync", contact, response.json())
+
+        logging.info("Contact synced to ClickUp: %s", contact_id)
